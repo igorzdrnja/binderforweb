@@ -1,4 +1,6 @@
 const  actionTypes = {
+    INIT_APP: 'INIT_APP',
+
     SET_PROFILE: 'SET_PROFILE',
 
     FETCH_QUESTIONS: 'FETCH_QUESTIONS',

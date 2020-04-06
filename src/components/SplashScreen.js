@@ -1,13 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {setProfile, fetchQuestions} from '../store/actions';
+import {setProfile, fetchQuestions, initApp} from '../store/actions';
 import binderLogo from "../images/binder-logo.png";
 import blackTownLogo from '../images/blacktown-logo.png';
 
 class SplashScreen extends React.Component {
     componentDidMount() {
-        this.props.fetchQuestions("SOMETHING");
+        this.props.initApp("SOMETHING");
     }
 
     render() {
@@ -33,6 +33,7 @@ SplashScreen.propTypes = {
     profile: PropTypes.string,
     setProfile: PropTypes.func.isRequired,
     fetchQuestions: PropTypes.func.isRequired,
+    initApp: PropTypes.func.isRequired,
 };
 
 SplashScreen.defaultProps = {
@@ -46,6 +47,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
     setProfile,
     fetchQuestions,
+    initApp,
 };
 
 export default connect(

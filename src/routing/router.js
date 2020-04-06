@@ -1,37 +1,21 @@
 import React from "react";
 import {
-    BrowserRouter as Router,
+    Router,
     Switch,
     Route,
     Link
 } from "react-router-dom";
+import history from './history';
+import routes from './routes';
 import FinalScore from '../components/FinalScore';
 import HowToPlay from '../components/HowToPlay';
 import QuestionsAndAnswers from '../components/QuestionsAndAnswers';
 import SelectProfileType from '../components/SelectProfileType';
 import SplashScreen from '../components/SplashScreen';
 
-// This site has 3 pages, all of which are rendered
-// dynamically in the browser (not server rendered).
-//
-// Although the page does not ever refresh, notice how
-// React Router keeps the URL up to date as you navigate
-// through the site. This preserves the browser history,
-// making sure things like the back button and bookmarks
-// work properly.
-
-const routes = {
-    HOME: '/',
-    SCORE: '/score',
-    HOW_TO_PLAY: '/how-to-play',
-    QUESTION: '/question',
-    SELECT_PROFILE: '/select-profile',
-    SPLASH_SCREEN: '/splash-screen',
-};
-
 export default function BasicExample() {
     return (
-        <Router>
+        <Router history={history}>
             <div>
                 <ul className="tmp-header">
                     <li>
