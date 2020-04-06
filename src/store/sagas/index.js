@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put, select, delay, takeLatest, take } from 'redux-saga/effects'
 import actionTypes from '../action-types';
 import routes from '../../routing/routes';
 import history from '../../routing/history';
@@ -19,8 +19,18 @@ function* fetchUser(action) {
 function* initAppFlow() {
     const profile = yield select((state) => state.profile);
 
+    yield delay(3000);
+
     if(!profile) {
         history.push(routes.SELECT_PROFILE);
+    } else {
+        history.push(routes.HOW_TO_PLAY);
+    }
+
+    const profileSet = yield take(actionTypes.SET_PROFILE);
+
+    if (profileSet) {
+        history.push(routes.HOW_TO_PLAY);
     }
 }
 

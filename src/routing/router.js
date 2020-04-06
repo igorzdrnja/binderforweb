@@ -37,7 +37,7 @@ export default function BasicExample() {
 
                 <Switch>
                     <Route exact path={routes.HOME}>
-                        <h1>Home</h1>
+                        <SplashScreen />
                     </Route>
                     <Route exact path={routes.SCORE}>
                         <FinalScore />

@@ -241,8 +241,8 @@ p {
     float: left;
     line-height: 43px;
 }
-.play-option > a,
-.play-option > a:hover {
+.play-option > button,
+.play-option > button:hover {
     display: inline-block;
     float: left;
     margin-left: 20px;
@@ -255,8 +255,9 @@ p {
     font-family: 'Airbnb Cereal App Medium', sans-serif;
     border-radius: 21px;
     overflow: hidden;
+    border: 0;
 }
-.student-profile-wrapper .play-option > a {
+.student-profile-wrapper .play-option > button {
     background-color: rgb(229,10,142);
     background-image: linear-gradient(to bottom right, rgb(229,10,142) , rgb(142,44,140));
 }
@@ -275,7 +276,7 @@ p {
         width: 50%;
     }
 }
-.community-profile-wrapper .play-option > a {
+.community-profile-wrapper .play-option > button {
     background-color: rgb(29,181,232);
     background-image: linear-gradient(to bottom right, rgb(29,181,232) , rgb(18,118,187));
 }

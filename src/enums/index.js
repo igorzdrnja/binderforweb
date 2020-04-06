@@ -1,0 +1,4 @@
+export const PROFILE_TYPES = {
+    STUDENT: 'STUDENT',
+    COMMUNITY: 'COMMUNITY',
+};

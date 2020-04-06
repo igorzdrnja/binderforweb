@@ -1,11 +1,12 @@
 import React from 'react'
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import {PROFILE_TYPES} from '../enums';
+import ButtonWrapper from "./ButtonWrapper";
+import {setProfile} from "../store/actions";
 import binderLogo from '../images/binder-logo-blue.png';
 
 class SelectProfileType extends React.Component {
-    startQuiz(type) {
-
-    }
-
     render() {
         return (
             <div className="content-wrapper bckg-grey">
@@ -22,13 +23,17 @@ class SelectProfileType extends React.Component {
                         <div className="student-profile-wrapper">
                             <div className="play-option">
                                 <h2>Student</h2>
-                                <a href="#">Play</a>
+                                <ButtonWrapper onClick={()=> {this.props.setProfile(PROFILE_TYPES.STUDENT);}}>
+                                    <span>Play</span>
+                                </ButtonWrapper>
                             </div>
                         </div>
                         <div className="community-profile-wrapper">
                             <div className="play-option">
                                 <h2>Community</h2>
-                                <a href="#">Play</a>
+                                <ButtonWrapper onClick={()=> {this.props.setProfile(PROFILE_TYPES.COMMUNITY);}}>
+                                    <span>Play</span>
+                                </ButtonWrapper>
                             </div>
                         </div>
                     </div>
@@ -38,4 +43,19 @@ class SelectProfileType extends React.Component {
     }
 }
 
-export default SelectProfileType
+SelectProfileType.propTypes = {
+    setProfile: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {
+    setProfile,
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SelectProfileType)
+
+// export default SelectProfileType
