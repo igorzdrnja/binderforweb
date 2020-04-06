@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from '../styles/global.css'
 
 class SelectProfileType extends React.Component {
     startQuiz(type) {
@@ -7,7 +6,7 @@ class SelectProfileType extends React.Component {
     }
 
     render() {
-
+        return (<h1>Start quiz</h1>);
     }
 }
 

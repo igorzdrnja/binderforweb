@@ -1,0 +1,91 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Binder - Correct answer</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/x-icon" href="../images/fav.ico">
+
+    <!-- stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="../javascripts/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="../stylesheets/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- modal back button -->
+<div class="modal" id="backButtonModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Are you sure?</h2>
+            </div>
+            <div class="modal-body">
+                <p>Going back will reset your progress.</p>
+            </div>
+            <div class="modal-footer">
+                <a href="select-profile.html" class="btn white-button">Start over</a>
+                <button type="button" class="btn blue-button" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-wrapper">
+    <div class="quiz-card-container">
+        <div class="quiz-card-header">
+            <div class="back-btn-wrapper">
+                <a href="#" class="btn blue-button" data-toggle="modal" data-target="#backButtonModal">Back</a>
+            </div>
+            <div class="progress-bar-wrapper">
+                <div class="progress-bar">9 of 20</div>
+            </div>
+            <div class="logo-small-wrapper"></div>
+        </div>
+        <div class="card-holder">
+            <div class="card-wrapper">
+                <div class="answer-header correct">Correct</div>
+                <div class="answer-info-wrapper">
+                    <div class="answer-info-img">
+                        <div class="bin-img-holder">
+                            <img class="img-fluid" src="../images/question-img.png" alt="">
+                        </div>
+                        <div class="equal-sign-wrapper"></div>
+                        <div class="bin-img-holder">
+                            <div class="red-bin-answer"></div>
+                        </div>
+                    </div>
+                    <div class="answer-info-text">Correct! Polystyrene goes in your garbage bin.</div>
+                </div>
+            </div>
+        </div>
+        <div class="bins-wrapper">
+            <div class="red-bin-wrapper disabled">
+                <div class="bin-name">General waste</div>
+            </div>
+            <div class="other-bin-wrapper disabled">
+                <div class="bin-name">Other</div>
+            </div>
+            <div class="next-arrow-wrapper">
+                <div class="next-arrow-holder">
+                    <a href="#" class="next-arrow"></a>
+                </div>
+                <div class="next-arrow-name">Next</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="../javascripts/bootstrap/js/bootstrap.min.js"></script>
+<script src="../javascripts/custom.js"></script>
+
+</body></html>
