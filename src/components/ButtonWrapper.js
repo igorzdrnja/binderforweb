@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ButtonWrapper extends React.Component {
     render() {
         return (
-            <button onClick={this.props.onClick}>
+            <button className={this.props.className} onClick={this.props.onClick}>
                 {this.props.children}
             </button>
         )
@@ -18,10 +18,12 @@ ButtonWrapper.propTypes = {
         PropTypes.element,
         PropTypes.object,
     ]),
+    className: PropTypes.string,
     onClick: PropTypes.func,
 };
 
 ButtonWrapper.defaultProps = {
+    className: '',
     onClick: () => {},
 };
 

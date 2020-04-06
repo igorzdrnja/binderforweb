@@ -18,3 +18,9 @@ export function fetchQuestions() {
         type: actionTypes.FETCH_QUESTIONS,
     };
 };
+
+export function startQuiz() {
+    return {
+        type: actionTypes.START_QUIZ,
+    };
+};
