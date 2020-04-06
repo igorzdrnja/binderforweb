@@ -21,6 +21,7 @@ import SplashScreen from '../components/SplashScreen';
 // work properly.
 
 const routes = {
+    HOME: '/',
     SCORE: '/score',
     HOW_TO_PLAY: '/how-to-play',
     QUESTION: '/question',
@@ -32,7 +33,7 @@ export default function BasicExample() {
     return (
         <Router>
             <div>
-                <ul>
+                <ul className="tmp-header">
                     <li>
                         <Link to={routes.SCORE}>Score</Link>
                     </li>
@@ -50,16 +51,10 @@ export default function BasicExample() {
                     </li>
                 </ul>
 
-                <hr />
-
-                {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
                 <Switch>
+                    <Route exact path={routes.HOME}>
+                        <h1>Home</h1>
+                    </Route>
                     <Route exact path={routes.SCORE}>
                         <FinalScore />
                     </Route>
