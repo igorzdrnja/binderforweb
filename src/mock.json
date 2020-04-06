@@ -1,0 +1,328 @@
+{
+  "Id": 3,
+  "Questions": [
+    {
+      "Id": 19,
+      "ItemName": "Baby food squeeze packs",
+      "QuestionText": "How do you dispose of baby food squeeze packs?",
+      "QuestionAnswers": [
+        {
+          "Id": 21,
+          "AnswerResponseText": "Correct! Baby food squeeze packs go in your garbage bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 22,
+          "AnswerResponseText": "Correct! Baby food squeeze packs can be taken to a RedCycle bin for recycling.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 23,
+          "AnswerResponseText": "Incorrect. Baby food squeeze packs can not be put in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 20,
+      "ItemName": "Cardboard",
+      "QuestionText": "How do you dispose of cardboard?",
+      "QuestionAnswers": [
+        {
+          "Id": 1,
+          "AnswerResponseText": "Correct! Cardboard can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 2,
+          "AnswerResponseText": "Incorrect. Cardboard can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": false
+        },
+        {
+          "Id": 3,
+          "AnswerResponseText": "Incorrect. Cardboard can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 21,
+      "ItemName": "Cigarette butts",
+      "QuestionText": "How do you dispose of cigarette butts?",
+      "QuestionAnswers": [
+        {
+          "Id": 16,
+          "AnswerResponseText": "Correct! Cigarette butts go in your garbage bin. Just make sure you put them out first!",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 17,
+          "AnswerResponseText": "Incorrect. Cigarette butts can not be put in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 22,
+      "ItemName": "Baby formula tins",
+      "QuestionText": "How do you dispose of baby formula tins?",
+      "QuestionAnswers": [
+        {
+          "Id": 18,
+          "AnswerResponseText": "Correct! Baby formula tins go in your recycling bin, just remember to seperate the lid!",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 19,
+          "AnswerResponseText": "Incorrect. Baby formula tins can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": false
+        },
+        {
+          "Id": 20,
+          "AnswerResponseText": "Incorrect. Baby formula tins can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 23,
+      "ItemName": "Chip packets",
+      "QuestionText": "How do you dispose of chip packets?",
+      "QuestionAnswers": [
+        {
+          "Id": 13,
+          "AnswerResponseText": "Correct! Chip packets go in your garbage bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 14,
+          "AnswerResponseText": "Correct! Chip packets can be taken to a RedCycle bin for recycling.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 15,
+          "AnswerResponseText": "Incorrect. Aluminium cans, foil and trays can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 24,
+      "ItemName": "Sports balls",
+      "QuestionText": "How do you dispose of sports balls?",
+      "QuestionAnswers": [
+        {
+          "Id": 24,
+          "AnswerResponseText": "Correct! Correct! Sports balls go in your garbage bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 25,
+          "AnswerResponseText": "Correct! Sports balls can be donated if in good condition.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 26,
+          "AnswerResponseText": "Incorrect. Sports balls can not be put in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 25,
+      "ItemName": "Glass bottles",
+      "QuestionText": "How do you dispose of glass bottles?",
+      "QuestionAnswers": [
+        {
+          "Id": 4,
+          "AnswerResponseText": "Correct! Glass bottles can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 5,
+          "AnswerResponseText": "Incorrect. Glass bottles can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": false
+        },
+        {
+          "Id": 6,
+          "AnswerResponseText": "Incorrect. Glass bottles can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 26,
+      "ItemName": "Aluminium cans, foil and trays",
+      "QuestionText": "How do you dispose of aluminium cans, foil and trays?",
+      "QuestionAnswers": [
+        {
+          "Id": 10,
+          "AnswerResponseText": "Correct! Aluminium cans, foil and trays can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 11,
+          "AnswerResponseText": "Incorrect. Aluminium cans, foil and trays can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": false
+        },
+        {
+          "Id": 12,
+          "AnswerResponseText": "Incorrect. Aluminium cans, foil and trays can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    },
+    {
+      "Id": 27,
+      "ItemName": "Glass jars",
+      "QuestionText": "How do you dispose of glass jars (jam, coffee, etc.)?",
+      "QuestionAnswers": [
+        {
+          "Id": 7,
+          "AnswerResponseText": "Correct! Glass jars can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 2,
+            "DisposalTypeName": "Recycling bin",
+            "IconColour": "Yellow"
+          },
+          "IsCorrectAnswer": true
+        },
+        {
+          "Id": 8,
+          "AnswerResponseText": "Incorrect. Glass jars can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 1,
+            "DisposalTypeName": "Garbage bin",
+            "IconColour": "Red"
+          },
+          "IsCorrectAnswer": false
+        },
+        {
+          "Id": 9,
+          "AnswerResponseText": "Incorrect. Glass jars can be recycled in your recycling bin.",
+          "QuestionAnswerType": {
+            "Id": 3,
+            "DisposalTypeName": "Other",
+            "IconColour": "Green"
+          },
+          "IsCorrectAnswer": false
+        }
+      ]
+    }
+  ]
+}
