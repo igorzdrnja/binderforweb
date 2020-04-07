@@ -27,6 +27,18 @@ function* submitQuestion(action) {
     }
 }
 
+function* submitCommunityData({type, communityData}) {
+    try {
+        yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_REQUEST});
+
+        yield delay(1500);
+        const response = yield call(Api.submitCommunityData, communityData);
+        yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_SUCCESS, response});
+    } catch (e) {
+        yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_ERROR, message: e.message});
+    }
+}
+
 function* appFlow() {
     history.push(routes.SELECT_PROFILE);
     const setProfile = yield take(actionTypes.SET_PROFILE);
@@ -71,6 +83,7 @@ function* rootSaga() {
     yield takeLatest(actionTypes.START_QUIZ, quizFlow);
     yield takeLatest(actionTypes.SUBMIT_ANSWER, submitQuestion);
     yield takeLatest(actionTypes.RESET_APP_FLOW, appFlow);
+    yield takeLatest(actionTypes.SUBMIT_COMMUNITY_DATA, submitCommunityData);
 }
 
 export default rootSaga;

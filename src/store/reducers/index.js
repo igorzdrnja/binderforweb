@@ -6,6 +6,7 @@ const INITIAL_STATE = {
     questions: null,
     questionsSetId: null,
     correctAnswers: 0,
+    communityFormData: null,
 };
 
 function reducer(state = INITIAL_STATE, action) {
@@ -31,6 +32,11 @@ function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 correctAnswers: action.answer.IsCorrectAnswer ? state.correctAnswers + 1 : state.correctAnswers,
+            };
+        case actionTypes.SUBMIT_COMMUNITY_DATA_SUCCESS:
+            return {
+                ...state,
+                communityFormData: action.response,
             };
         case actionTypes.GET_NEXT_QUESTION:
             return {

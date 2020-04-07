@@ -7,6 +7,9 @@ const Api = {
     submitQuestion: ({questionId, answer}) => {
         return {questionId, answer};
     },
+    submitCommunityData: (data) => {
+        return {...data};
+    },
 };
 
 export default Api;

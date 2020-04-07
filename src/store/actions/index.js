@@ -50,3 +50,12 @@ export function resetApp() {
         type: actionTypes.RESET_APP_FLOW,
     };
 };
+
+export function submitCommunityData(communityData) {
+    return {
+        type: actionTypes.SUBMIT_COMMUNITY_DATA,
+        payload: {
+            communityData,
+        },
+    };
+};
