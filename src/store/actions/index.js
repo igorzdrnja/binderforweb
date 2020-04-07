@@ -44,3 +44,9 @@ export function finishQuiz() {
         type: actionTypes.QUIZ_FINISHED,
     };
 };
+
+export function resetApp() {
+    return {
+        type: actionTypes.RESET_APP_FLOW,
+    };
+};

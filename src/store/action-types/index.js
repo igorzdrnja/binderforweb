@@ -1,6 +1,8 @@
 const  actionTypes = {
     INIT_APP: 'INIT_APP',
 
+    RESET_APP_FLOW: 'RESET_APP_FLOW',
+
     START_QUIZ: 'START_QUIZ',
 
     QUIZ_FINISHED: 'QUIZ_FINISHED',

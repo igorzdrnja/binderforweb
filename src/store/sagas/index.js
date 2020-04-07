@@ -1,4 +1,4 @@
-import { call, put, select, delay, takeLatest, take, race } from 'redux-saga/effects'
+import { call, put, select, delay, takeLatest, take, race, takeEvery } from 'redux-saga/effects'
 import actionTypes from '../action-types';
 import routes from '../../routing/routes';
 import history from '../../routing/history';
@@ -29,45 +29,38 @@ function* submitQuestion(action) {
     }
 }
 
-function* masterAppFlow() {
-    history.push(routes.SPLASH_SCREEN);
-    const profile = yield select((state) => state.profile);
-
-    yield delay(3000);
-
-    if(!profile) {
-        history.push(routes.SELECT_PROFILE);
-    } else {
-        history.push(routes.HOW_TO_PLAY);
-    }
-
-    if(!profile) {
-        history.push(routes.SELECT_PROFILE);
-    } else {
-        history.push(routes.HOW_TO_PLAY);
-    }
-
-    // const {setProfile, startQuiz, quizFinished} = yield race({
-    //     setProfile: actionTypes.SET_PROFILE,
-    //     startQuiz: actionTypes.START_QUIZ,
-    //     quizFinished: actionTypes.QUIZ_FINISHED
-    // });
-    // console.log({setProfile, startQuiz, quizFinished})
-
+function* appFlow() {
+    history.push(routes.SELECT_PROFILE);
     const setProfile = yield take(actionTypes.SET_PROFILE);
     if (setProfile) {
         history.push(routes.HOW_TO_PLAY);
     }
 
-    const startQuiz = yield take(actionTypes.START_QUIZ);
+    const {startQuiz, resetAppFlow} = yield race({
+        startQuiz: take(actionTypes.START_QUIZ),
+        resetAppFlow: take(actionTypes.RESET_APP_FLOW),
+    });
+
     if (startQuiz) {
         history.push(routes.QUESTION);
+    }
+
+    if (resetAppFlow) {
+        return;
     }
 
     const quizFinished = yield take(actionTypes.QUIZ_FINISHED);
     if (quizFinished) {
         history.push(routes.SCORE);
     }
+}
+
+function* initAppFlow() {
+    history.push(routes.SPLASH_SCREEN);
+
+    yield delay(3000);
+
+    yield call(appFlow);
 }
 
 function* quizFlow() {
@@ -77,9 +70,10 @@ function* quizFlow() {
 
 function* rootSaga() {
     yield takeLatest(actionTypes.FETCH_QUESTIONS, fetchUser);
-    yield takeLatest(actionTypes.INIT_APP, masterAppFlow);
+    yield takeLatest(actionTypes.INIT_APP, initAppFlow);
     yield takeLatest(actionTypes.START_QUIZ, quizFlow);
     yield takeLatest(actionTypes.SUBMIT_ANSWER, submitQuestion);
+    yield takeLatest(actionTypes.RESET_APP_FLOW, appFlow);
 }
 
 export default rootSaga;
