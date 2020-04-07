@@ -1,6 +1,4 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom';
-import routes from '../routing/routes';
+import React, {Component} from 'react';
 import redBin from '../images/red-bin.png';
 import otherBin from '../images/other-bin.png';
 import yellowBin from '../images/yellow-bin.png';

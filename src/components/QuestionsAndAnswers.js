@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import ConfirmBackOutOfQuiz from './ConfirmBackOutOfQuiz';
 import questionImage from '../images/question-img.png';
 import PropTypes from "prop-types";
-import {submitAnswer, getNextQuestion, finishQuiz} from "../store/actions";
+import {submitAnswer, getNextQuestion, finishQuiz, resetApp} from "../store/actions";
 import connect from "react-redux/es/connect/connect";
+import ButtonWrapper from "./ButtonWrapper";
 
 const  resetState = {
     showConfirmationDialog: false,
@@ -37,6 +37,10 @@ class QuestionsAndAnswers extends React.Component {
         this.setState({
             showConfirmationDialog: false,
         });
+    };
+
+    confirmConfirmationDialog = () => {
+        this.props.resetApp();
     };
 
     handleSelectAnswer = (answer, answerColor) => {
@@ -88,14 +92,14 @@ class QuestionsAndAnswers extends React.Component {
                 <div className="quiz-card-container">
                     <div className="quiz-card-header">
                         <div className="back-btn-wrapper">
-                            <Link
+                            <ButtonWrapper
                                 onClick={this.showConfirmationDialog}
                                 className="btn blue-button"
                                 data-toggle="modal"
                                 data-target="#backButtonModal"
                             >
                                 Back
-                            </Link>
+                            </ButtonWrapper>
                         </div>
                         <div className="progress-bar-wrapper">
                             <div className="progress-bar" style={progressStyle}>{questionIndex + 1} of {numberOfQuestions}</div>
@@ -179,9 +183,9 @@ class QuestionsAndAnswers extends React.Component {
                         ) : null}
 
                         {answer ? (
-                            <div onClick={this.handleNextArrowClick} className="next-arrow-wrapper">
+                            <div className="next-arrow-wrapper">
                                 <div className="next-arrow-holder">
-                                    <a href="#" className="next-arrow" />
+                                    <ButtonWrapper className="next-arrow" onClick={this.handleNextArrowClick} />
                                 </div>
                                 <div className="next-arrow-name">Next</div>
                             </div>
@@ -190,7 +194,10 @@ class QuestionsAndAnswers extends React.Component {
                 </div>
 
                 {this.state.showConfirmationDialog
-                    ? <ConfirmBackOutOfQuiz onCancelHandler={this.hideConfirmationDialog}/>
+                    ? <ConfirmBackOutOfQuiz
+                        onCancelHandler={this.hideConfirmationDialog}
+                        onConfirmHandler={this.confirmConfirmationDialog}
+                    />
                     : null
                 }
             </div>
@@ -202,6 +209,7 @@ QuestionsAndAnswers.propTypes = {
     submitAnswer: PropTypes.func.isRequired,
     getNextQuestion: PropTypes.func.isRequired,
     finishQuiz: PropTypes.func.isRequired,
+    resetApp: PropTypes.func.isRequired,
     question: PropTypes.object,
     numberOfQuestions: PropTypes.number,
     questionIndex: PropTypes.number,
@@ -216,6 +224,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
+    resetApp,
     submitAnswer,
     getNextQuestion,
     finishQuiz,

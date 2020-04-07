@@ -1,16 +1,14 @@
-import { call, put, select, delay, takeLatest, take, race, takeEvery } from 'redux-saga/effects'
+import { call, put, delay, takeLatest, take, race } from 'redux-saga/effects'
 import actionTypes from '../action-types';
 import routes from '../../routing/routes';
 import history from '../../routing/history';
 import Api from '../../apis';
 
-function* fetchUser(action) {
-    console.log({action})
+function* fetchQuestions(action) {
     try {
         yield put({type: actionTypes.FETCH_QUESTIONS_REQUEST});
 
-        const questionsSet = yield call(Api.fetchUser);
-        console.log({questionsSet})
+        const questionsSet = yield call(Api.fetchQuestions);
         yield put({type: actionTypes.FETCH_QUESTIONS_SUCCESS, questionsSet});
     } catch (e) {
         yield put({type: actionTypes.FETCH_QUESTIONS_ERROR, message: e.message});
@@ -64,12 +62,11 @@ function* initAppFlow() {
 }
 
 function* quizFlow() {
-    console.log('START QUIZ FLOW')
-    yield call(fetchUser);
+    yield call(fetchQuestions);
 }
 
 function* rootSaga() {
-    yield takeLatest(actionTypes.FETCH_QUESTIONS, fetchUser);
+    yield takeLatest(actionTypes.FETCH_QUESTIONS, fetchQuestions);
     yield takeLatest(actionTypes.INIT_APP, initAppFlow);
     yield takeLatest(actionTypes.START_QUIZ, quizFlow);
     yield takeLatest(actionTypes.SUBMIT_ANSWER, submitQuestion);

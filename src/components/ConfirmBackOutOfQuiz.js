@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import routes from '../routing/routes';
 import ButtonWrapper from "./ButtonWrapper";
 
 class ConfirmBackOutOfQuiz extends React.Component {
@@ -17,7 +15,9 @@ class ConfirmBackOutOfQuiz extends React.Component {
                             <p>Going back will reset your progress.</p>
                         </div>
                         <div className="modal-footer">
-                            <Link to={routes.HOW_TO_PLAY} className="btn white-button">Start over</Link>
+                            <ButtonWrapper onClick={this.props.onConfirmHandler} className="btn white-button">
+                                Start over
+                            </ButtonWrapper>
                             <ButtonWrapper className="btn blue-button" onClick={this.props.onCancelHandler}>
                                 Cancel
                             </ButtonWrapper>
@@ -31,6 +31,7 @@ class ConfirmBackOutOfQuiz extends React.Component {
 
 ConfirmBackOutOfQuiz.propTypes = {
     onCancelHandler: PropTypes.func,
+    onConfirmHandler: PropTypes.func,
 };
 
 export default ConfirmBackOutOfQuiz;
