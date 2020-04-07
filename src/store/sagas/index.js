@@ -4,15 +4,28 @@ import routes from '../../routing/routes';
 import history from '../../routing/history';
 import Api from '../../apis';
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* fetchUser(action) {
+    console.log({action})
     try {
         yield put({type: actionTypes.FETCH_QUESTIONS_REQUEST});
 
-        const user = yield call(Api.fetchUser, action.payload.userId);
-        yield put({type: actionTypes.FETCH_QUESTIONS_SUCCESS, user: user});
+        const questionsSet = yield call(Api.fetchUser);
+        console.log({questionsSet})
+        yield put({type: actionTypes.FETCH_QUESTIONS_SUCCESS, questionsSet});
     } catch (e) {
         yield put({type: actionTypes.FETCH_QUESTIONS_ERROR, message: e.message});
+    }
+}
+
+function* submitQuestion(action) {
+    try {
+        yield put({type: actionTypes.SUBMIT_ANSWER_REQUEST});
+
+        yield delay(1500);
+        const submitedQuestionResponse = yield call(Api.submitQuestion, action);
+        yield put({type: actionTypes.SUBMIT_ANSWER_SUCCESS, submitedQuestionResponse});
+    } catch (e) {
+        yield put({type: actionTypes.SUBMIT_ANSWER_ERROR, message: e.message});
     }
 }
 
@@ -59,12 +72,14 @@ function* masterAppFlow() {
 
 function* quizFlow() {
     console.log('START QUIZ FLOW')
+    yield call(fetchUser);
 }
 
 function* rootSaga() {
     yield takeLatest(actionTypes.FETCH_QUESTIONS, fetchUser);
     yield takeLatest(actionTypes.INIT_APP, masterAppFlow);
     yield takeLatest(actionTypes.START_QUIZ, quizFlow);
+    yield takeLatest(actionTypes.SUBMIT_ANSWER, submitQuestion);
 }
 
 export default rootSaga;

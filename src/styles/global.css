@@ -533,7 +533,7 @@ p {
     overflow: hidden;
 }
 .progress-bar {
-    width: 45%;
+    /*width: 45%;*/
     height: 26px;
     float: left;
     background-color: rgb(229,10,142);
@@ -589,12 +589,12 @@ p {
     transition: all .25s linear;
     cursor: move;
 }
-.card-wrapper#incorrect {
-    display: none;
-}
-.card-wrapper#correct {
-    display: none;
-}
+/*.card-wrapper#incorrect {*/
+    /*display: none;*/
+/*}*/
+/*.card-wrapper#correct {*/
+    /*display: none;*/
+/*}*/
 .card-holder.selected-yellow {
     -moz-transform: rotate(10deg);
     -ms-transform: rotate(10deg);

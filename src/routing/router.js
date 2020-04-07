@@ -17,7 +17,7 @@ export default function BasicExample() {
     return (
         <Router history={history}>
             <div>
-                <ul className="tmp-header">
+                <ul className="tmp-header" style={{display: "none"}}>
                     <li>
                         <Link to={routes.SCORE}>Score</Link>
                     </li>

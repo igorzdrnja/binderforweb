@@ -24,3 +24,23 @@ export function startQuiz() {
         type: actionTypes.START_QUIZ,
     };
 };
+
+export function submitAnswer({questionId, answer}) {
+    return {
+        type: actionTypes.SUBMIT_ANSWER,
+        questionId,
+        answer,
+    };
+};
+
+export function getNextQuestion() {
+    return {
+        type: actionTypes.GET_NEXT_QUESTION,
+    };
+};
+
+export function finishQuiz() {
+    return {
+        type: actionTypes.QUIZ_FINISHED,
+    };
+};
