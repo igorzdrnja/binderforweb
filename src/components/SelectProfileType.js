@@ -13,7 +13,7 @@ class SelectProfileType extends React.Component {
                 <div className="select-profile-container">
                     <div className="select-profile-header">
                         <div className="header-title">
-                            <h1>Select profile</h1>
+                            <h1><strong>Select profile</strong></h1>
                         </div>
                         <div className="header-logo">
                             <img className="img-fluid" src={binderLogo} alt="" />

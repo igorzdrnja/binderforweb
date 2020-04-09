@@ -25,7 +25,7 @@ class FinalScore extends React.Component {
                         <div className="score-wrapper">
                             <div className="score-img-wrapper" />
                             <div className="result-wrapper">
-                                <div className="result-info"><span className="bigger">{percent.toFixed(2)}%</span> correct</div>
+                                <div className="result-info"><span className="bigger">{percent.toFixed()}%</span> correct</div>
                                 <p>You got {correctAnswers} out of {numberOfQuestions} questions right.</p>
                             </div>
                         </div>
@@ -58,7 +58,7 @@ const mapStateToProps = (state) => {
     return {
         correctAnswers: state.correctAnswers,
         numberOfQuestions: state.questions ? state.questions.length : null,
-        profileType: state.profile,
+        profileType: state.profileType,
         communityFormData: state.communityFormData,
     }
 };

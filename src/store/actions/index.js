@@ -6,16 +6,17 @@ export function initApp() {
     }
 };
 
-export function setProfile(profile) {
+export function setProfile(profileType) {
     return {
         type: actionTypes.SET_PROFILE,
-        profile
+        profileType
     }
 };
 
-export function fetchQuestions() {
+export function fetchQuestions(profileTypeId) {
     return {
         type: actionTypes.FETCH_QUESTIONS,
+        profileTypeId
     };
 };
 

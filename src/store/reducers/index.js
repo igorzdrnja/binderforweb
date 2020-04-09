@@ -1,7 +1,7 @@
 import actionTypes from '../action-types';
 
 const INITIAL_STATE = {
-    profile: null,
+    profileType: null,
     currentQuestionIndex: null,
     questions: null,
     questionsSetId: null,
@@ -14,7 +14,7 @@ function reducer(state = INITIAL_STATE, action) {
         case actionTypes.SET_PROFILE:
             return {
                 ...state,
-                profile: action.profile,
+                profileType: action.profileType,
             };
         case actionTypes.START_QUIZ:
             return {
@@ -24,8 +24,8 @@ function reducer(state = INITIAL_STATE, action) {
         case actionTypes.FETCH_QUESTIONS_SUCCESS:
             return {
                 ...state,
-                questions: action.questionsSet.Questions,
-                questionsSetId: action.questionsSet.Id,
+                questions: action.questionsSet.data.Questions,
+                questionsSetId: action.questionsSet.data.Id,
                 currentQuestionIndex: 0,
             };
         case actionTypes.SUBMIT_ANSWER:
@@ -42,6 +42,16 @@ function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 currentQuestionIndex: state.currentQuestionIndex + 1,
+            };
+        case actionTypes.RESET_APP_FLOW:
+            return {
+                ...state,
+                profileType: null,
+                currentQuestionIndex: null,
+                questions: null,
+                questionsSetId: null,
+                correctAnswers: 0,
+                communityFormData: null,
             };
         default:
             return state

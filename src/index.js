@@ -4,9 +4,10 @@ import { Provider } from 'react-redux'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
+import './fonts/AirbnbCerealBold.woff';
+import './fonts/AirbnbCerealBook.woff';
+import './fonts/AirbnbCerealMedium.woff';
 import './styles/global.css';
-import './styles/bootstrap.css';
-import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>

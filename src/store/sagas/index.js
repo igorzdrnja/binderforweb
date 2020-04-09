@@ -4,11 +4,12 @@ import routes from '../../routing/routes';
 import history from '../../routing/history';
 import Api from '../../apis';
 
-function* fetchQuestions(action) {
+function* fetchQuestions() {
     try {
         yield put({type: actionTypes.FETCH_QUESTIONS_REQUEST});
 
         const questionsSet = yield call(Api.fetchQuestions);
+        yield delay(300);
         yield put({type: actionTypes.FETCH_QUESTIONS_SUCCESS, questionsSet});
     } catch (e) {
         yield put({type: actionTypes.FETCH_QUESTIONS_ERROR, message: e.message});
