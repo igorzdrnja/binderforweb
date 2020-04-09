@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '../store/index'
 
-const apiRootUrl = 'http://apigmtest.azurewebsites.net/api/Waste/'
+const apiRootUrl = 'https://apigmtest.azurewebsites.net/api/Waste/'
 
 
 const Api = {
