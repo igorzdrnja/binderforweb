@@ -1,9 +1,16 @@
 import React from 'react';
-import ConfirmBackOutOfQuiz from './ConfirmBackOutOfQuiz';
-import questionImage from '../images/question-img.png';
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
+import { DndProvider } from 'react-dnd'
+import TouchBackend from 'react-dnd-touch-backend'
+import htmlBackend from 'react-dnd-html5-backend'
 import {submitAnswer, getNextQuestion, finishQuiz, resetApp} from "../store/actions";
-import connect from "react-redux/es/connect/connect";
+import ConfirmBackOutOfQuiz from './ConfirmBackOutOfQuiz';
+import DraggableQuestionWrapper from './DraggableQuestionWrapper';
+import DropableAnswerWrapper from './DropableAnswerWrapper';
+import QuestionCard from './QuestionCard';
+import AnswerCard from "./AnswerCard";
+import questionImage from '../images/question-img.png';
 import ButtonWrapper from "./ButtonWrapper";
 
 const  resetState = {
@@ -86,8 +93,10 @@ class QuestionsAndAnswers extends React.Component {
         const redClassName = `red-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
         const otherClassName = `other-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
         const yellowClassName = `yellow-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
+        const dndOptions = {};
 
         return (
+            <DndProvider backend={TouchBackend} options={dndOptions}>
             <div className="content-wrapper">
                 <div className="quiz-card-container">
                     <div className="quiz-card-header">
@@ -108,78 +117,65 @@ class QuestionsAndAnswers extends React.Component {
                     </div>
                     <div className={cardHolderClassName}>
                         {!answer ? (
-                        <div className="card-wrapper"
-                             id="dragtarget"
-                             // draggable="true"
-                             // onDragStart="dragStart(event)"
-                             // onDrag="dragging(event)"
-                        >
-                            <div className="card-question">{question.QuestionText}</div>
-                            <div className="card-img">
-                                <img className="img-fluid" src={questionImage} alt="" />
-                            </div>
-                        </div>
+                            <DraggableQuestionWrapper>
+                                <QuestionCard
+                                    isAnswered={!!answer}
+                                    questionImage={questionImage}
+                                    questionText={question.QuestionText}
+                                />
+                            </DraggableQuestionWrapper>
                         ) : null }
 
                         {answer ? (
-                        <div className="card-wrapper" id={answer.IsCorrectAnswer ? 'correct' : 'incorrect'}>
-                            <div className={`answer-header ${answer.IsCorrectAnswer ? 'correct' : 'incorrect'}`}>
-                                {answer.IsCorrectAnswer ? 'Correct' : 'Incorrect'}
-                            </div>
-                            <div className="answer-info-wrapper">
-                                <div className="answer-info-img">
-                                    <div className="bin-img-holder">
-                                        <img className="img-fluid" src={questionImage} alt="" />
-                                    </div>
-                                    <div className="equal-sign-wrapper" />
-                                    <div className="bin-img-holder">
-                                        <div className="red-bin-answer" />
-                                    </div>
-                                </div>
-                                <div className="answer-info-text">{answer.AnswerResponseText}</div>
-                            </div>
-                        </div>
+                            <AnswerCard
+                                questionImage={questionImage}
+                                answerResponseText={answer.AnswerResponseText}
+                                isCorrectAnswer={answer.IsCorrectAnswer}
+                            />
                         ) : null }
                     </div>
                     <div className="bins-wrapper">
                         {answers.red ? (
-                        <div
-                            className={redClassName}
-                            id="redBin"
-                            onClick={() => { this.handleSelectAnswer(answers.red, 'red');}}
-                            // onDragEnter={this.onDragEnter}
-                            // onDragLeave={this.onDragLeave}
-                            // onDrop={this.onDrop}
-                            // onDragOver={this.onDragOver}
-                        >
-                            <div className="bin-name">General waste</div>
-                        </div>
+                            <DropableAnswerWrapper
+                                className={redClassName}
+                                onDrop={() => { this.handleSelectAnswer(answers.red, 'red');}}
+                                onClick={() => { this.handleSelectAnswer(answers.red, 'red');}}
+                            >
+                                <div
+                                    id="redBin"
+                                    onClick={() => { this.handleSelectAnswer(answers.red, 'red');}}
+                                >
+                                    <div className="bin-name">General waste</div>
+                                </div>
+                            </DropableAnswerWrapper>
                         ) : null}
                         {answers.green ? (
-                        <div
-                            className={otherClassName}
-                            id="otherBin"
-                            onClick={() => { this.handleSelectAnswer(answers.green, 'other');}}
-                            // onDragEnter={this.onDragEnter}
-                            // onDragLeave={this.onDragLeave}
-                            // onDrop={this.onDrop}
-                            // onDragOver={this.onDragOver}
-                        >
-                            <div className="bin-name">Other</div>
-                        </div>
+                            <DropableAnswerWrapper
+                                className={otherClassName}
+                                onDrop={() => { this.handleSelectAnswer(answers.green, 'other');}}
+                                onClick={() => { this.handleSelectAnswer(answers.green, 'other');}}
+                            >
+                                <div
+                                    id="otherBin"
+                                    onClick={() => { this.handleSelectAnswer(answers.green, 'other');}}
+                                >
+                                    <div className="bin-name">Other</div>
+                                </div>
+                            </DropableAnswerWrapper>
                         ) : null}
                         {answers.yellow && !answer ? (
-                            <div
+                            <DropableAnswerWrapper
                                 className={yellowClassName}
-                                id="yellowBin"
+                                onDrop={() => { this.handleSelectAnswer(answers.yellow, 'yellow');}}
                                 onClick={() => { this.handleSelectAnswer(answers.yellow, 'yellow');}}
-                                // onDragEnter={this.onDragEnter}
-                                // onDragLeave={this.onDragLeave}
-                                // onDrop={this.onDrop}
-                                // onDragOver={this.onDragOver}
                             >
-                                <div className="bin-name">Recycling</div>
-                            </div>
+                                <div
+                                    id="yellowBin"
+                                    onClick={() => { this.handleSelectAnswer(answers.yellow, 'yellow');}}
+                                >
+                                    <div className="bin-name">Recycling</div>
+                                </div>
+                            </DropableAnswerWrapper>
                         ) : null}
 
                         {answer ? (
@@ -201,6 +197,7 @@ class QuestionsAndAnswers extends React.Component {
                     : null
                 }
             </div>
+            </DndProvider>
         )
     }
 }
