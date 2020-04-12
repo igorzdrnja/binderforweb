@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     profileType: null,
     currentQuestionIndex: null,
     questions: null,
-    questionsSetId: null,
+    quizId: null,
     correctAnswers: 0,
     communityFormData: null,
 };
@@ -25,7 +25,7 @@ function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 questions: action.questionsSet.data.Questions,
-                questionsSetId: action.questionsSet.data.Id,
+                quizId: action.questionsSet.data.Id,
                 currentQuestionIndex: 0,
             };
         case actionTypes.SUBMIT_ANSWER:
@@ -49,7 +49,7 @@ function reducer(state = INITIAL_STATE, action) {
                 profileType: null,
                 currentQuestionIndex: null,
                 questions: null,
-                questionsSetId: null,
+                quizId: null,
                 correctAnswers: 0,
                 communityFormData: null,
             };

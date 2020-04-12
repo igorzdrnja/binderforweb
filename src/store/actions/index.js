@@ -26,11 +26,11 @@ export function startQuiz() {
     };
 };
 
-export function submitAnswer({questionId, answer}) {
+export function submitQuestionAnswer({questionId, answer}) {
     return {
         type: actionTypes.SUBMIT_ANSWER,
         questionId,
-        answer,
+        answer
     };
 };
 

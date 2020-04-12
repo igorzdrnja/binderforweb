@@ -5,23 +5,37 @@ import {connect} from "react-redux";
 
 class CommunityForm extends React.Component {
     state = {
-        rewards: false,
-        app: false,
-        living: false,
-        news: false,
+        checked: {
+            '1': false,
+            '2': false,
+            '3': false,
+            '4': false,
+        },
         email: '',
+        error: ''
     };
 
     onChangeHandler = event => {
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-
-        this.setState({
-            [event.target.name]: value,
-        })
+        this.setState({'error': ''})
+        if (event.target.type === 'checkbox') {
+            let checked = Object.assign({}, this.state.checked)
+            checked[event.target.name] = event.target.checked;
+            this.setState({
+                checked: checked
+            })
+        }
     };
 
     submitForm = (event) => {
         event.preventDefault();
+        const ch = this.state.checked
+        const someAreChecked =  Object.keys(ch).some(k => ch[k]);
+
+        if (!someAreChecked) {
+            this.setState({'error': 'Please select at least one option'})
+            return;
+        }
+
 
         this.props.submitCommunityData({
             ...this.state,
@@ -40,19 +54,19 @@ class CommunityForm extends React.Component {
                     </div>
                     <form onSubmit={this.submitForm}>
                         <div className="form-group">
-                            <input id="check1" type="checkbox" name="rewards" onChange={this.onChangeHandler} />
+                            <input id="check1" type="checkbox" name="1" onChange={this.onChangeHandler} />
                             <label htmlFor="check1">Rewards for recycling</label>
                         </div>
                         <div className="form-group">
-                            <input id="check2" type="checkbox" name="app" onChange={this.onChangeHandler} />
+                            <input id="check2" type="checkbox" name="2" onChange={this.onChangeHandler} />
                             <label htmlFor="check2">New community app</label>
                         </div>
                         <div className="form-group">
-                            <input id="check3" type="checkbox" name="living" onChange={this.onChangeHandler} />
+                            <input id="check3" type="checkbox" name="3" onChange={this.onChangeHandler} />
                             <label htmlFor="check3">Sustainable living</label>
                         </div>
                         <div className="form-group">
-                            <input id="check4" type="checkbox" name="news" onChange={this.onChangeHandler} />
+                            <input id="check4" type="checkbox" name="4" onChange={this.onChangeHandler} />
                             <label htmlFor="check4">Blacktown City news</label>
                         </div>
                         <div className="email-submit-wrapper">
@@ -67,6 +81,7 @@ class CommunityForm extends React.Component {
                             </div>
                             <div className="submit-wrapper">
                                 <input type="submit" className="btn blue-button" value="Submit" />
+                                <div className="form-text" style={{color: 'red'}}>{ this.state.error }</div>
                             </div>
                         </div>
                     </form>
@@ -78,6 +93,9 @@ class CommunityForm extends React.Component {
 
 CommunityForm.propTypes = {
     submitCommunityData: PropTypes.func.isRequired,
+    error: PropTypes.string,
+    email: PropTypes.string,
+    checked: PropTypes.array
 };
 
 const mapStateToProps = (state) => {

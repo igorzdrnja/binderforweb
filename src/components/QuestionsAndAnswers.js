@@ -2,7 +2,7 @@ import React from 'react';
 import ConfirmBackOutOfQuiz from './ConfirmBackOutOfQuiz';
 import questionImage from '../images/question-img.png';
 import PropTypes from "prop-types";
-import {submitAnswer, getNextQuestion, finishQuiz, resetApp} from "../store/actions";
+import {submitQuestionAnswer, getNextQuestion, finishQuiz, resetApp} from "../store/actions";
 import connect from "react-redux/es/connect/connect";
 import ButtonWrapper from "./ButtonWrapper";
 
@@ -10,6 +10,7 @@ const  resetState = {
     showConfirmationDialog: false,
     answer: null,
     answerColor: null,
+    quizId: null
 };
 
 class QuestionsAndAnswers extends React.Component {
@@ -17,6 +18,7 @@ class QuestionsAndAnswers extends React.Component {
         showConfirmationDialog: false,
         answer: null,
         answerColor: null,
+        quizId: null
     };
 
     componentDidUpdate = (prevProps) => {
@@ -46,12 +48,12 @@ class QuestionsAndAnswers extends React.Component {
     handleSelectAnswer = (answer, answerColor) => {
         this.setState({
             answerColor: answerColor,
-            answer,
+            answer
         });
 
-        this.props.submitAnswer({
+        this.props.submitQuestionAnswer({
             questionId: this.props.question.Id,
-            answer,
+            answer
         });
     };
 
@@ -78,10 +80,6 @@ class QuestionsAndAnswers extends React.Component {
         question.QuestionAnswers.forEach((possibleAnswer) => {
             answers[possibleAnswer.QuestionAnswerType.IconColour.toLowerCase()] = possibleAnswer;
         });
-        // Id: 21
-        // AnswerResponseText: "Correct! Baby food squeeze packs go in your garbage bin."
-        // QuestionAnswerType: {Id: 1, DisposalTypeName: "Garbage bin", IconColour: "Red"}
-        // IsCorrectAnswer: true
 
         const redClassName = `red-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
         const otherClassName = `other-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
@@ -146,7 +144,7 @@ class QuestionsAndAnswers extends React.Component {
                         <div
                             className={redClassName}
                             id="redBin"
-                            onClick={() => { this.handleSelectAnswer(answers.red, 'red');}}
+                            onClick={() => { this.handleSelectAnswer(answers.red, 'red', );}}
                             // onDragEnter={this.onDragEnter}
                             // onDragLeave={this.onDragLeave}
                             // onDrop={this.onDrop}
@@ -206,7 +204,7 @@ class QuestionsAndAnswers extends React.Component {
 }
 
 QuestionsAndAnswers.propTypes = {
-    submitAnswer: PropTypes.func.isRequired,
+    submitQuestionAnswer: PropTypes.func.isRequired,
     getNextQuestion: PropTypes.func.isRequired,
     finishQuiz: PropTypes.func.isRequired,
     resetApp: PropTypes.func.isRequired,
@@ -220,12 +218,13 @@ const mapStateToProps = (state) => {
         question: state.questions ? state.questions[state.currentQuestionIndex] : null,
         questionIndex: state.questions ? state.currentQuestionIndex : null,
         numberOfQuestions: state.questions ? state.questions.length : null,
+        quizId: state.quizId ? state.quizId : null
     }
 };
 
 const mapDispatchToProps = {
     resetApp,
-    submitAnswer,
+    submitQuestionAnswer,
     getNextQuestion,
     finishQuiz,
 };

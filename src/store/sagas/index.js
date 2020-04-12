@@ -16,23 +16,35 @@ function* fetchQuestions() {
     }
 }
 
-function* submitQuestion(action) {
+function* submitQuestionAnswer(answerData) {
     try {
         yield put({type: actionTypes.SUBMIT_ANSWER_REQUEST});
 
-        yield delay(1500);
-        const submitedQuestionResponse = yield call(Api.submitQuestion, action);
-        yield put({type: actionTypes.SUBMIT_ANSWER_SUCCESS, submitedQuestionResponse});
+        //yield delay(1500);
+        const submittedQuestionResponse = yield call(Api.submitQuestionAnswer, answerData);
+        yield put({type: actionTypes.SUBMIT_ANSWER_SUCCESS, submittedQuestionResponse});
     } catch (e) {
         yield put({type: actionTypes.SUBMIT_ANSWER_ERROR, message: e.message});
     }
+}
+
+function* submitQuizResult() {
+    try {
+        yield put({type: actionTypes.SUBMIT_QUIZ_RESULT_REQUEST});
+
+        //yield delay(1500);
+        const submittedQuizResponse = yield call(Api.submitQuizResult);
+        yield put({type: actionTypes.SUBMIT_QUIZ_RESULT_SUCCESS, submittedQuizResponse});
+    } catch (e) {
+    yield put({type: actionTypes.SUBMIT_QUIZ_RESULT_ERROR, message: e.message});
+}
 }
 
 function* submitCommunityData({type, communityData}) {
     try {
         yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_REQUEST});
 
-        yield delay(1500);
+        // yield delay(1500);
         const response = yield call(Api.submitCommunityData, communityData);
         yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_SUCCESS, response});
     } catch (e) {
@@ -82,8 +94,9 @@ function* rootSaga() {
     yield takeLatest(actionTypes.FETCH_QUESTIONS, fetchQuestions);
     yield takeLatest(actionTypes.INIT_APP, initAppFlow);
     yield takeLatest(actionTypes.START_QUIZ, quizFlow);
-    yield takeLatest(actionTypes.SUBMIT_ANSWER, submitQuestion);
+    yield takeLatest(actionTypes.SUBMIT_ANSWER, submitQuestionAnswer);
     yield takeLatest(actionTypes.RESET_APP_FLOW, appFlow);
+    yield takeLatest(actionTypes.QUIZ_FINISHED, submitQuizResult);
     yield takeLatest(actionTypes.SUBMIT_COMMUNITY_DATA, submitCommunityData);
 }
 
