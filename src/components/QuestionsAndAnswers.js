@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import { DndProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
-import htmlBackend from 'react-dnd-html5-backend'
+// import htmlBackend from 'react-dnd-html5-backend'
 import {submitAnswer, getNextQuestion, finishQuiz, resetApp} from "../store/actions";
 import ConfirmBackOutOfQuiz from './ConfirmBackOutOfQuiz';
 import DraggableQuestionWrapper from './DraggableQuestionWrapper';
