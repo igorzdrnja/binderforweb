@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5964846771b7d92947d389501055f79e",
+    "revision": "a3922f5079b5bbb3bd33a4ca49f70a09",
     "url": "/binderforweb/index.html"
   },
   {
-    "revision": "6f6ca64395e4ba359a5c",
+    "revision": "ee5644b4cc556e24e710",
     "url": "/binderforweb/static/css/main.02d17d6c.chunk.css"
   },
   {
-    "revision": "bb8f210f11860f1cdcd6",
-    "url": "/binderforweb/static/js/2.e9a43bec.chunk.js"
+    "revision": "ffe5260f63357a2b01d8",
+    "url": "/binderforweb/static/js/2.82cfe3f9.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/binderforweb/static/js/2.e9a43bec.chunk.js.LICENSE.txt"
+    "url": "/binderforweb/static/js/2.82cfe3f9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6f6ca64395e4ba359a5c",
-    "url": "/binderforweb/static/js/main.065eb35b.chunk.js"
+    "revision": "ee5644b4cc556e24e710",
+    "url": "/binderforweb/static/js/main.00fd7674.chunk.js"
   },
   {
     "revision": "5259991e356b4db3d962",
