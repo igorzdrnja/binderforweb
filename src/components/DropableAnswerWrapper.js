@@ -18,10 +18,11 @@ const DropableAnswerWrapper = (props) => {
     const dropStyle = {
         transform: isOver ? 'scale(1.25)' : null,
     };
+    const className = `${props.className} ${isOver ? 'selected-answer' : ''}`;
 
     return (
         <div
-            className={props.className}
+            className={className}
             style={dropStyle}
             ref={drop}
             onClick={props.onClick}

@@ -59,7 +59,7 @@ class CommunityForm extends React.Component {
                         </div>
                         <div className="form-group">
                             <input id="check2" type="checkbox" name="2" onChange={this.onChangeHandler} />
-                            <label htmlFor="check2">New community app</label>
+                            <label htmlFor="check2">B informed app</label>
                         </div>
                         <div className="form-group">
                             <input id="check3" type="checkbox" name="3" onChange={this.onChangeHandler} />
