@@ -1,7 +1,8 @@
 import axios from 'axios'
 import store from '../store/index'
 
-const apiRootUrl = 'https://apigmtest.azurewebsites.net/api/Waste/'
+// const apiRootUrl = 'https://apigmtest.azurewebsites.net/api/Waste/'
+const apiRootUrl = 'https://api.greenmoney.com.au/api/Waste/';
 
 const Api = {
     fetchQuestions: () => {
