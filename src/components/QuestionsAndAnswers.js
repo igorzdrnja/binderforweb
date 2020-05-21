@@ -10,7 +10,7 @@ import DraggableQuestionWrapper from './DraggableQuestionWrapper';
 import DropableAnswerWrapper from './DropableAnswerWrapper';
 import QuestionCard from './QuestionCard';
 import AnswerCard from "./AnswerCard";
-import questionImage from '../images/question-img.png';
+import questionImagePlaceholder from '../images/question-img.png';
 import ButtonWrapper from "./ButtonWrapper";
 
 const  resetState = {
@@ -92,6 +92,7 @@ class QuestionsAndAnswers extends React.Component {
         const otherClassName = `other-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
         const yellowClassName = `yellow-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
         const dndOptions = {};
+        const questionImage = question.QuestionImagePath ? question.QuestionImagePath : questionImagePlaceholder;
 
         return (
             <DndProvider backend={TouchBackend} options={dndOptions}>
