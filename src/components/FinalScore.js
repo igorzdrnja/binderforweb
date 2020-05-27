@@ -29,9 +29,7 @@ class FinalScore extends React.Component {
                                 <p>You got {correctAnswers} out of {numberOfQuestions} questions right.</p>
                             </div>
                         </div>
-                        {profileType === PROFILE_TYPES.COMMUNITY && !communityFormData ? (
-                            <CommunityForm/>
-                        ) : null}
+                        {!communityFormData ? (<CommunityForm/>) : null}
                     </div>
                     <div className="footer-buttons-wrapper">
                         <div className="left-btn-wrapper">
