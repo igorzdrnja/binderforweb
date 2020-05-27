@@ -16,19 +16,23 @@ class CommunityForm extends React.Component {
     };
 
     onChangeHandler = event => {
-        this.setState({'error': ''})
+        this.setState({'error': ''});
         if (event.target.type === 'checkbox') {
             let checked = Object.assign({}, this.state.checked)
             checked[event.target.name] = event.target.checked;
             this.setState({
                 checked: checked
             })
+        } else {
+            const newState = {};
+            newState[event.target.name] = event.target.value;
+            this.setState({...newState});
         }
     };
 
     submitForm = (event) => {
         event.preventDefault();
-        const ch = this.state.checked
+        const ch = this.state.checked;
         const someAreChecked =  Object.keys(ch).some(k => ch[k]);
 
         if (!someAreChecked) {
@@ -36,10 +40,16 @@ class CommunityForm extends React.Component {
             return;
         }
 
+        Object.keys(ch).forEach((categoryId, value) => {
+            const isChecked = ch[categoryId];
 
-        this.props.submitCommunityData({
-            ...this.state,
-        });
+            if(isChecked) {
+                this.props.submitCommunityData({
+                    email: this.state.email,
+                    categoryId,
+                });
+            }
+        })
     };
 
     render() {

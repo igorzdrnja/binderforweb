@@ -26,8 +26,13 @@ const Api = {
             }
         });
     },
-    submitCommunityData: (data) => {
-        return {...data};
+    submitCommunityData: ({email, categoryId}) => {
+        return axios.post(apiRootUrl + 'SendEmail', {}, {
+            headers: {
+                categoryId,
+                email,
+            }
+        });
     },
 };
 

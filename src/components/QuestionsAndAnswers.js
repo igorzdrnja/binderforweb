@@ -11,7 +11,6 @@ import DraggableQuestionWrapper from './DraggableQuestionWrapper';
 import DropableAnswerWrapper from './DropableAnswerWrapper';
 import QuestionCard from './QuestionCard';
 import AnswerCard from "./AnswerCard";
-import questionImagePlaceholder from '../images/question-img.png';
 import ButtonWrapper from "./ButtonWrapper";
 
 const  resetState = {

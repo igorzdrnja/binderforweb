@@ -56,7 +56,7 @@ export function submitCommunityData(communityData) {
     return {
         type: actionTypes.SUBMIT_COMMUNITY_DATA,
         payload: {
-            communityData,
+            ...communityData,
         },
     };
 };

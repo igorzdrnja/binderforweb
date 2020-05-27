@@ -40,12 +40,12 @@ function* submitQuizResult() {
 }
 }
 
-function* submitCommunityData({type, communityData}) {
+function* submitCommunityData({type, payload}) {
     try {
         yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_REQUEST});
 
         // yield delay(1500);
-        const response = yield call(Api.submitCommunityData, communityData);
+        const response = yield call(Api.submitCommunityData, payload);
         yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_SUCCESS, response});
     } catch (e) {
         yield put({type: actionTypes.SUBMIT_COMMUNITY_DATA_ERROR, message: e.message});
