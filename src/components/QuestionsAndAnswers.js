@@ -77,7 +77,7 @@ class QuestionsAndAnswers extends React.Component {
     previewGenerator = ({itemType, item, style}) => {
         const {question} = this.props;
         const {answer} = this.state;
-        const questionImage = question.QuestionImagePath ? question.QuestionImagePath : questionImagePlaceholder;
+        const questionImage = question.QuestionImagePath ? question.QuestionImagePath : null;
         const customStyle = {
             ...style,
             opacity: 0.75
@@ -98,7 +98,7 @@ class QuestionsAndAnswers extends React.Component {
 
     render() {
         const {question, questionIndex, numberOfQuestions} = this.props;
-        const {answer} = this.state;
+        const {answer, answerColor} = this.state;
 
         if (!question) { return null; }
         const progressStyle = {
@@ -115,7 +115,7 @@ class QuestionsAndAnswers extends React.Component {
         const otherClassName = `other-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
         const yellowClassName = `yellow-bin-wrapper droptarget ${answer ? 'disabled' : ''}`;
         const dndOptions = {};
-        const questionImage = question.QuestionImagePath ? question.QuestionImagePath : questionImagePlaceholder;
+        const questionImage = question.QuestionImagePath ? question.QuestionImagePath : null;
 
         return (
             <DndProvider backend={backend} options={dndOptions}>
@@ -153,6 +153,7 @@ class QuestionsAndAnswers extends React.Component {
                                     questionImage={questionImage}
                                     answerResponseText={answer.AnswerResponseText}
                                     isCorrectAnswer={answer.IsCorrectAnswer}
+                                    answerColor={answerColor}
                                 />
                             ) : null }
                         </div>
