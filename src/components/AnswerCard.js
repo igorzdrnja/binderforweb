@@ -1,23 +1,17 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
-const AnswerCard = ({isCorrectAnswer, questionImage, answerResponseText, answerColor}) => {
-    let answerBin = null;
+const AnswerCard = ({isCorrectAnswer, questionImage, answerResponseText, answerColor, possibleAnswers}) => {
+    let answerBin = (<div className={`${answerColor}-bin-answer`} />);
 
-    switch (answerColor) {
-        case 'yellow': {
-            answerBin = (<div className="yellow-bin-answer" />);
-            break;
-        }
-        case 'other': {
-            answerBin = (<div className="other-bin-answer" />);
-            break;
-        }
-        default:
-        case 'red': {
-            answerBin = (<div className="red-bin-answer" />);
-            break;
-        }
+    if(!isCorrectAnswer) {
+        possibleAnswers.forEach((answer, index) => {
+            const answerBinColor = answer.QuestionAnswerType.IconColour.toLowerCase();
+            const answerBinClassName = `${answerBinColor === 'green' ? 'other' : answerBinColor}-bin-answer`;
+            if(answer.IsCorrectAnswer) {
+                answerBin = (<div className={answerBinClassName} />);
+            }
+        });
     }
 
     return (
@@ -46,6 +40,7 @@ AnswerCard.propTypes = {
     questionImage: PropTypes.string,
     answerResponseText: PropTypes.string,
     answerColor: PropTypes.string,
+    possibleAnswers: PropTypes.array,
 };
 
 export default AnswerCard;

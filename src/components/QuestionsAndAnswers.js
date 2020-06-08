@@ -153,6 +153,7 @@ class QuestionsAndAnswers extends React.Component {
                                     answerResponseText={answer.AnswerResponseText}
                                     isCorrectAnswer={answer.IsCorrectAnswer}
                                     answerColor={answerColor}
+                                    possibleAnswers={question.QuestionAnswers}
                                 />
                             ) : null }
                         </div>
